@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dekhkanov Timepieces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            width: 180px;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #4a3828;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #8b6f47;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b6f47;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(74, 56, 40, 0.95) 0%, rgba(109, 84, 54, 0.95) 100%), url('craftsman-work.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: spin 80s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .hero-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #e5d5c0;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-year {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: linear-gradient(135deg, #8b6f47 0%, #6d5436 100%);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(139, 111, 71, 0.4);
+        }
+
+        .story-year h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 300;
+        }
+
+        .story-year p {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .story-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 400;
+            color: #4a3828;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .story-content p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .story-highlight {
+            background: #f9f7f5;
+            padding: 30px;
+            border-left: 4px solid #8b6f47;
+            margin-top: 40px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .story-highlight p {
+            font-style: italic;
+            color: #4a3828;
+            margin: 0;
+            font-size: 17px;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, #4a3828 0%, #6d5436 100%);
+            padding: 100px 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-section::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -400px;
+            left: -200px;
+            animation: spin 100s linear infinite;
+        }
+
+        .values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .values-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .values-header p {
+            font-size: 18px;
+            color: #e5d5c0;
+            font-weight: 300;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            border-color: #d4af37;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 36px;
+            color: #4a3828;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #e5d5c0;
+            font-weight: 300;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .team-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            color: #4a3828;
+            margin-bottom: 20px;
+        }
+
+        .team-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 400px;
+            background: #f5f3f0;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover .member-image img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .member-info h3 {
+            font-size: 24px;
+            color: #4a3828;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .member-info p {
+            font-size: 14px;
+            color: #8b6f47;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .member-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .member-social a {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #e5e5e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b6f47;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .member-social a:hover {
+            background: #8b6f47;
+            color: white;
+            border-color: #8b6f47;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: #f9f7f5;
+            padding: 120px 40px;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .timeline-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            color: #4a3828;
+            margin-bottom: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #8b6f47, #d4af37, #8b6f47);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -56px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #8b6f47;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #f9f7f5;
+        }
+
+        .timeline-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #8b6f47;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content h3 {
+            font-size: 22px;
+            color: #4a3828;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4a3828 0%, #6d5436 100%);
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #e5d5c0;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            color: #000;
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-btn-secondary:hover {
+            background: white;
+            color: #4a3828;
+        }
+
+        /* Footer */
+        .luxury-footer {
+            background: linear-gradient(135deg, #2a1f16 0%, #4a3828 100%);
+            color: #e5d5c0;
+            padding: 80px 0 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            color: #c4b5a0;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid rgba(229, 213, 192, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c4b5a0;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #8b6f47;
+            color: white;
+            border-color: #8b6f47;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #e5d5c0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #c4b5a0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e5d5c0;
+            transform: translateX(5px);
+            display: inline-block;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(229, 213, 192, 0.3), transparent);
+            margin: 50px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .footer-legal p {
+            font-size: 13px;
+            color: #8b7a6a;
+        }
+
+        @media (max-width: 1024px) {
+
+            .story-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .story-section,
+            .team-section,
+            .timeline-section {
+                padding: 80px 20px;
+            }
+
+            .story-content h2,
+            .values-header h2,
+            .team-header h2,
+            .timeline-header h2 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="signature.png" alt="Dekhkanov">
+        </div>
+        <div class="nav-center">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Collections</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <div class="hero-label">Since 1898</div>
+            <h1 class="hero-title">Crafting Time,<br>Creating Legacy</h1>
+            <p class="hero-description">
+                For over a century, Dekhkanov has been synonymous with precision, elegance, and timeless craftsmanship
+                in the world of luxury timepieces.
+            </p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-image">
+                <img src="craftsman-work.jpg" alt="Master Craftsman">
+                <div class="story-year">
+                    <h3>1898</h3>
+                    <p>Founded</p>
+                </div>
+            </div>
+            <div class="story-content">
+                <h2>Our Story Began in the Heart of Geneva</h2>
+                <p>
+                    In 1898, master watchmaker Viktor Dekhkanov opened a small atelier in Geneva's historic old town.
+                    His vision was simple yet profound: to create timepieces that would transcend generations, each one
+                    a masterpiece of mechanical artistry.
+                </p>
+                <p>
+                    What started as a modest workshop has evolved into one of the world's most respected luxury watch
+                    manufacturers. Yet, despite our growth, we've never lost sight of Viktor's original philosophy:
+                    every watch that bears the Dekhkanov name must represent the pinnacle of horological excellence.
+                </p>
+                <p>
+                    Today, our watches are worn by discerning collectors, world leaders, and connoisseurs who appreciate
+                    the marriage of traditional craftsmanship and innovative engineering. Each piece tells a story – not
+                    just of time passing, but of moments captured, memories preserved, and legacies created.
+                </p>
+                <div class="story-highlight">
+                    <p>"A watch is more than a tool for keeping time. It is a companion through life's most precious
+                        moments, a legacy to be passed down through generations." - Viktor Dekhkanov, 1898</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="values-container">
+            <div class="values-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide every timepiece we create</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We pursue perfection in every detail, from the smallest component to the final polish. Our
+                        standards are uncompromising.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Craftsmanship</h3>
+                    <p>Each watch is handcrafted by master artisans who have dedicated their lives to the art of
+                        horology.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>While respecting tradition, we continuously push boundaries with cutting-edge materials and
+                        movements.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3>Heritage</h3>
+                    <p>Over 125 years of watchmaking expertise guide every decision we make and every piece we create.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We are committed to responsible sourcing and sustainable practices that protect our planet's
+                        future.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3>Passion</h3>
+                    <p>Our love for watchmaking drives us to create timepieces that inspire and endure for generations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="team-header">
+            <h2>Meet Our Master Craftsmen</h2>
+            <p>The talented individuals who bring centuries of tradition and modern innovation together to create
+                exceptional timepieces.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="hero_main.jpg" alt="Team Member">
+                </div>
+                <div class="member-info">
+                    <h3>Alexandre Dubois</h3>
+                    <p>Master Watchmaker</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="craftsman-work.jpg" alt="Team Member">
+                </div>
+                <div class="member-info">
+                    <h3>Isabella Moretti</h3>
+                    <p>Design Director</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="limited-watch.png" alt="Team Member">
+                </div>
+                <div class="member-info">
+                    <h3>Jean-Pierre Laurent</h3>
+                    <p>Chief Horologist</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <div class="timeline-header">
+                <h2>Our Journey Through Time</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1898</div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Viktor Dekhkanov opens his first atelier in Geneva, establishing the foundation of what would
+                            become a legendary watchmaking house.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1925</div>
+                    <div class="timeline-content">
+                        <h3>First Complications</h3>
+                        <p>Launch of our first perpetual calendar movement, establishing Dekhkanov as a master of
+                            complex mechanisms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1952</div>
+                    <div class="timeline-content">
+                        <h3>Global Recognition</h3>
+                        <p>Dekhkanov timepieces worn at the coronation of Queen Elizabeth II, cementing our status among
+                            royalty and dignitaries.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1978</div>
+                    <div class="timeline-content">
+                        <h3>Innovation Era</h3>
+                        <p>Introduction of our revolutionary ultra-thin movement, just 2.4mm thick, setting new
+                            standards in watchmaking.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2005</div>
+                    <div class="timeline-content">
+                        <h3>Modern Heritage</h3>
+                        <p>Opening of our state-of-the-art manufacture, combining traditional craftsmanship with
+                            cutting-edge technology.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Future Vision</h3>
+                        <p>Continuing our legacy with sustainable practices and innovative materials while honoring 127
+                            years of excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

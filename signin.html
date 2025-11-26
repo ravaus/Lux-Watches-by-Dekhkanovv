@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Orologio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: black;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signin-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 480px;
+            padding: 3rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-text img {
+            width: 300px;
+        }
+
+        .signin-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .signin-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #c9a65c;
+            margin-bottom: 1rem;
+        }
+
+        .signin-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .signin-description {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .signin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d4af37;
+        }
+
+        .form-input {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+
+        .forgot-link {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #d4af37;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #f4d03f;
+        }
+
+        .signin-button {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            color: #0a0a0a;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .signin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+        }
+
+        .signin-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .social-signin {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-button {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-button:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+        }
+
+        .signup-prompt {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+        }
+
+        .signup-link {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link:hover {
+            color: #f4d03f;
+        }
+
+        .demo-info {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .demo-info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-info code {
+            color: #d4af37;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .signin-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .signin-title {
+                font-size: 2.5rem;
+            }
+
+            .social-signin {
+                flex-direction: column;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            z-index: 11;
+        }
+
+        .close-btn::before,
+        .close-btn::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.6);
+            top: 50%;
+            left: 50%;
+        }
+
+        .close-btn::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .close-btn::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">
+        <button class="close-btn"></button>
+    </a>
+    <div class="signin-container">
+        <div class="logo">
+            <div class="logo-text">
+                <img src="signature.png" alt="">
+            </div>
+        </div>
+
+        <div class="signin-header">
+            <div class="signin-subtitle">Welcome Back</div>
+            <h1 class="signin-title">Sign In</h1>
+            <p class="signin-description">Continue your journey through time</p>
+        </div>
+
+        <div class="demo-info">
+            <p><strong>Demo Credentials</strong></p>
+            <p>Login: <code>admin</code> | Password: <code>123456</code></p>
+        </div>
+
+        <form class="signin-form" id="signinForm">
+            <div class="form-group">
+                <label class="form-label" for="login">LOGIN</label>
+                <input class="form-input" type="text" id="login" name="login" placeholder="Enter your login" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-input" type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-options">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember">
+                    <label class="checkbox-label" for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="signin-button" id="submitBtn">Sign In</button>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        <div class="divider">
+            <span>or</span>
+        </div>
+
+        <div class="social-signin">
+            <button class="social-button">Google</button>
+            <button class="social-button">Apple</button>
+        </div>
+
+        <div class="signup-prompt">
+            Don't have an account? <a href="#" class="signup-link">Create one</a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing In...';
+            errorMsg.classList.remove('show');
+            
+            const result = signIn(login, password);
+            
+            if (result.success) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const returnUrl = urlParams.get('return');
+                
+                setTimeout(() => {
+                    window.location.href = returnUrl || 'patek-index.html';
+                }, 500);
+            } else {
+                errorMsg.textContent = result.message;
+                errorMsg.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            }
+        });
+
+        if (isAuthenticated()) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const returnUrl = urlParams.get('return');
+            window.location.href = returnUrl || 'patek-index.html';
+        }
+    </script>
+    <script src="auth.js"></script>
+</body>
+
+</html>

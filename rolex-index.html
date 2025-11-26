@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolex - Orologio Luxury Timepieces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.85);
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .crown-logo {
+            width: 32px;
+            height: 32px;
+            color: #006039;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 6px;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .back-home {
+            padding: 0.65rem 1.8rem;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .back-home:hover {
+            background: #006039;
+            border-color: #006039;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, #0d0d0d 0%, #000000 100%);
+            overflow: hidden;
+        }
+
+        .hero-crown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.03;
+            color: #006039;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-title {
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 1px;
+            background: #006039;
+            margin: 3rem auto;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 520px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Collections Section */
+        .collections-section {
+            padding: 140px 60px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #006039;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #000000;
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: 2px;
+        }
+
+        /* Watch Grid */
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 50px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .watch-card {
+            background: #fafafa;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            border-color: #e8e8e8;
+        }
+
+        .watch-image-container {
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-image-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(0, 96, 57, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .watch-image-container img {
+            height: 160%;
+            object-fit: cover;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+        }
+
+        .watch-card:hover .watch-image-container img {
+            transform: scale(1.08);
+        }
+
+        .watch-info {
+            padding: 35px 30px 30px;
+            background: #fafafa;
+        }
+
+        .watch-collection {
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #006039;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .watch-name {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .watch-specs {
+            font-size: 0.8rem;
+            color: #666666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .watch-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 22px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .watch-price {
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: #000000;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .add-to-cart-btn {
+            width: 100px;
+            height: 46px;
+            background: #000000;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #006039;
+            transform: scale(1.05);
+        }
+
+        .add-to-cart-btn i {
+            font-size: 1rem;
+        }
+
+        /* Limited Badge */
+        .limited-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #006039;
+            color: #ffffff;
+            padding: 6px 14px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 3;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            padding: 80px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-crown {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 30px;
+            color: #006039;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-brand {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 4px;
+            margin-top: 30px;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        @media (max-width: 1024px) {
+            .watches-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 5rem;
+                letter-spacing: 10px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .watches-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .collections-section {
+                padding: 80px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-text">ROLEX & DEKHKANOV</div>
+        </div>
+        <a href="index.html" class="back-home">Back to Home</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <svg class="hero-crown" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15 8L21 9L16 14L18 21L12 17L6 21L8 14L3 9L9 8L12 2Z" />
+        </svg>
+
+        <div class="hero-content">
+            <div class="hero-label">A Crown for Every Achievement</div>
+            <img class="hero-title" src="Rolex_logo.svg.png" alt="">
+            <div class="hero-line"></div>
+            <p class="hero-description">
+                The embodiment of excellence and precision. Every Rolex watch is a testament
+                to superlative craftsmanship and timeless design.
+            </p>
+        </div>
+    </section>
+
+    <section class="collections-section">
+        <div class="section-header">
+            <div class="section-label">The Collection</div>
+            <h2 class="section-title">Rolex Timepieces</h2>
+        </div>
+
+        <div class="watches-grid" id="watchesGrid"></div>
+    </section>
+
+    <footer class="footer">
+        
+        <svg class="footer-crown" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15 8L21 9L16 14L18 21L12 17L6 21L8 14L3 9L9 8L12 2Z" />
+        </svg>
+        <div style="margin-top: -20px;" class="logo-text">ROLEX</div>
+        <p class="footer-text">DEKHKANOV Timepieces Ltd.</p>
+        <p class="footer-text">Official Rolex Retailer</p>
+        <p class="footer-text">15 Rue de la Horlogerie, Geneva, Switzerland</p>
+        <div class="footer-brand">DEKHKANOV</div>
+    </footer>
+
+    <script src="rolex.js">
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA - Swiss Luxury Watches</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .brand-header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 25px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(139, 0, 0, 0.15);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+
+        .back-home:hover {
+            color: #8B0000;
+        }
+
+        .back-home i {
+            font-size: 11px;
+        }
+
+        .brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 8px;
+            color: #fff;
+        }
+
+        .brand-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .brand-nav a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.4s ease;
+        }
+
+        .brand-nav a:hover {
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 8% 100px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+            border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 12px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .hero-tagline {
+            font-size: 14px;
+            color: #8B0000;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            line-height: 2;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(139, 0, 0, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            color: #8B0000;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        .featured-collections {
+            padding: 80px 8%;
+            background: #0a0a0a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            color: #fff;
+            letter-spacing: 4px;
+        }
+
+        .collections-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .collection-tag {
+            background: transparent;
+            padding: 15px 35px;
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .collection-tag:hover {
+            border-color: #8B0000;
+            color: #8B0000;
+        }
+
+        .filter-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 0 8%;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-btn {
+            padding: 12px 35px;
+            background: transparent;
+            border: 1px solid rgba(139, 0, 0, 0.2);
+            color: #999;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: #8B0000;
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: rgba(139, 0, 0, 0.1);
+            border-color: #8B0000;
+            color: #8B0000;
+        }
+
+        .watches-section {
+            padding: 0 8% 120px;
+            background: #0a0a0a;
+        }
+
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .watch-card {
+            background: transparent;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .watch-card:hover {
+            border-color: rgba(139, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .watch-image {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: #0f0f0f;
+            overflow: hidden;
+        }
+
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.95);
+        }
+
+        .watch-card:hover .watch-image img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .watch-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(10, 10, 10, 0.9);
+            color: #8B0000;
+            padding: 6px 16px;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 10;
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        .watch-info {
+            padding: 35px 30px;
+            background: #0a0a0a;
+        }
+
+        .watch-collection {
+            color: #8B0000;
+            font-size: 10px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .watch-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .watch-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .watch-specs {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(139, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .watch-spec {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.5px;
+        }
+
+        .watch-spec i {
+            color: #8B0000;
+            font-size: 10px;
+        }
+
+        .watch-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .watch-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: #999;
+            padding: 12px 28px;
+            border: 1px solid rgba(139, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        }
+
+        .btn-primary:hover {
+            border-color: #8B0000;
+            background-color: #8B0000;
+            color: white;
+        }
+
+        .brand-footer {
+            background: #0a0a0a;
+            padding: 60px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .brand-footer p {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .brand-footer p:first-child {
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 42px;
+                letter-spacing: 6px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .watch-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .brand-header {
+                padding: 20px 5%;
+            }
+
+            .hero-section {
+                padding: 80px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="brand-header">
+        <div class="header-content">
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>Home</span>
+            </a>
+            <div class="brand-logo">OMEGA & DEKHKANOV</div>
+            <nav class="brand-nav">
+                <a href="#collections">Collections</a>
+                <a href="#watches">Timepieces</a>
+                <a href="#about">Heritage</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">OMEGA</h1>
+            <p class="hero-tagline">Excellence in Watchmaking Since 1848</p>
+            <p class="hero-description">
+                For over 170 years, OMEGA has been at the forefront of precision watchmaking. From the first watch on the Moon to serving as the Official Timekeeper of the Olympic Games, OMEGA continues to define excellence in Swiss horology.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">1848</div>
+                    <div class="stat-label">Founded</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">170+</div>
+                    <div class="stat-label">Years Heritage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">Timepieces</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-collections" id="collections">
+        <h2 class="section-title">Iconic Collections</h2>
+        <div class="collections-grid">
+            <div class="collection-tag">Speedmaster</div>
+            <div class="collection-tag">Seamaster</div>
+            <div class="collection-tag">Constellation</div>
+            <div class="collection-tag">De Ville</div>
+        </div>
+    </section>
+
+    <section class="filter-section" id="watches">
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterWatches('all')">All Timepieces</button>
+            <button class="filter-btn" onclick="filterWatches('Speedmaster')">Speedmaster</button>
+            <button class="filter-btn" onclick="filterWatches('Seamaster')">Seamaster</button>
+            <button class="filter-btn" onclick="filterWatches('Constellation')">Constellation</button>
+            <button class="filter-btn" onclick="filterWatches('De Ville')">De Ville</button>
+        </div>
+    </section>
+
+    <section class="watches-section">
+        <div class="watch-grid" id="watchGrid"></div>
+    </section>
+
+    <footer class="brand-footer" id="about">
+        <p>OMEGA — Swiss Luxury Watchmaking</p>
+        <p>Biel/Bienne, Switzerland — Est. 1848</p>
+    </footer>
+
+    <script src="omega.js">
+
+    </script>
+</body>
+</html>

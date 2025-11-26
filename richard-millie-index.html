@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Mille - Racing Machines on the Wrist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #E30613;
+        }
+
+        .brand-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #E30613;
+            text-transform: uppercase;
+        }
+
+        .nav-spacer {
+            width: 150px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(227, 6, 19, 0.03) 50px, rgba(227, 6, 19, 0.03) 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(227, 6, 19, 0.03) 50px, rgba(227, 6, 19, 0.03) 51px);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            color: #E30613;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 7rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-title .red {
+            color: #E30613;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .tech-line {
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E30613, transparent);
+            margin: 3rem auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            position: sticky;
+            top: 90px;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            z-index: 100;
+            padding: 2rem 0;
+        }
+
+        .filter-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.8rem 2rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #E30613;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .filter-btn:hover {
+            color: #fff;
+            border-color: #E30613;
+        }
+
+        .filter-btn:hover::before {
+            left: 0;
+        }
+
+        .filter-btn.active {
+            background: #E30613;
+            border-color: #E30613;
+            color: #fff;
+        }
+
+        /* Watch Collection Grid */
+        .collection-section {
+            padding: 5rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .watch-card {
+            background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+            border: 1px solid #222;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(227, 6, 19, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .watch-card:hover::before {
+            left: 100%;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-10px);
+            border-color: #E30613;
+            box-shadow: 0 25px 60px rgba(227, 6, 19, 0.3);
+        }
+
+        .watch-image-container {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .watch-card:hover .watch-image-container img {
+            transform: scale(1.1);
+        }
+
+        .limited-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #E30613;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .watch-model {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            font-weight: 300;
+        }
+
+        .watch-name {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .watch-card:hover .watch-name {
+            color: #E30613;
+        }
+
+        .watch-specs {
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 0.8rem;
+        }
+
+        .spec-label {
+            color: #666;
+            font-weight: 300;
+        }
+
+        .spec-value {
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .watch-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #222;
+        }
+
+        .watch-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #E30613;
+            font-weight: 700;
+        }
+
+        .add-to-cart {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #333;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .add-to-cart:hover {
+            background: #E30613;
+            border-color: #E30613;
+            color: #fff;
+        }
+
+        .brand-statement {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);
+            padding: 8rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .statement-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .statement-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .statement-text {
+            font-size: 1.2rem;
+            color: #888;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: #E30613;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        @media (max-width: 1400px) {
+            .watches-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .watches-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .watches-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .filter-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+                BACK TO HOME
+            </a>
+            <div class="brand-logo">RICHARD MILLE & DEKHKANOV</div>
+            <div class="nav-spacer"></div>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-subtitle">RACING MACHINES</div>
+            <h1 class="hero-title">
+                A RACING MACHINE<br>
+                <span class="red">ON THE WRIST</span>
+            </h1>
+            <div class="tech-line"></div>
+            <p class="hero-description">
+                Where haute horlogerie meets Formula 1 technology. Each timepiece represents 
+                the ultimate fusion of innovation, performance, and uncompromising craftsmanship.
+            </p>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">ALL MODELS</button>
+            <button class="filter-btn" data-category="tourbillon">TOURBILLON</button>
+            <button class="filter-btn" data-category="automatic">AUTOMATIC</button>
+            <button class="filter-btn" data-category="chronograph">CHRONOGRAPH</button>
+            <button class="filter-btn" data-category="manual">MANUAL WINDING</button>
+        </div>
+    </section>
+
+    <section class="collection-section">
+        <div class="watches-grid" id="watchesGrid">
+        </div>
+    </section>
+
+    <section class="brand-statement">
+        <div class="statement-content">
+            <h2 class="statement-title">
+                INNOVATION<br>
+                <span class="red">& PRECISION</span>
+            </h2>
+            <div class="tech-line"></div>
+            <p class="statement-text">
+                Richard Mille timepieces are born from a singular vision: to create watches 
+                that embody the same principles as Formula 1 racing machines. Every component 
+                is engineered for maximum performance, minimal weight, and absolute reliability.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Hours Development</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5000</div>
+                    <div class="stat-label">Annual Production</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Swiss Made</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="richard-mille.js">
+
+    </script>
+
+</body>
+</html>

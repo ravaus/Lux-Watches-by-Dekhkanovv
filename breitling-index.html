@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breitling - Instruments for Professionals</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap');
+        :root {
+            --accent: #F9C116;
+            --muted: #9b9b9b;
+            --gap: 24px;
+            --bg: #0b0b0b;
+            --maxwidth: 1600px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #ffffff;
+            color: #000;
+            min-height: 100vh;
+        }
+        .header {
+            padding: 25px 80px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            letter-spacing: 12px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .back-btn {
+            background: var(--accent);
+            border: none;
+            color: #000;
+            padding: 16px 45px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .3s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 450px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: #000;
+        }
+
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(249, 193, 22, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 80% 50%, rgba(249, 193, 22, 0.12) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(40px, 8vw, 96px);
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            font-weight: 400;
+            text-shadow: 0 4px 20px rgba(249, 193, 22, 0.35);
+        }
+
+        .hero-tagline {
+            font-size: clamp(14px, 1.6vw, 24px);
+            color: var(--accent);
+            letter-spacing: 6px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #ccc;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 18px auto;
+        }
+        .container {
+            max-width: var(--maxwidth);
+            margin: 0 auto;
+            padding: 80px 40px;
+            background: #fff;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            text-align: center;
+            font-weight: 400;
+            color: #000;
+            letter-spacing: 8px;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 60px;
+        }
+
+        .watch-card {
+            background: #fff;
+            border: 2px solid #f0f0f0;
+            overflow: hidden;
+            transition: all .4s cubic-bezier(.4, 0, .2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, #000 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .4s ease;
+        }
+
+        .watch-card:hover::before {
+            transform: scaleX(1)
+        }
+
+        .watch-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .12);
+            transform: translateY(-8px)
+        }
+
+        .watch-image {
+            width: 100%;
+            height: 380px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease
+        }
+
+        .watch-card:hover .watch-image img {
+            transform: scale(1.08)
+        }
+
+        .watch-info {
+            padding: 30px 28px;
+            background: #fff
+        }
+
+        .watch-model {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px
+        }
+
+        .watch-name {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 18px
+        }
+
+        .watch-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee
+        }
+
+        .detail-label {
+            color: #999;
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase
+        }
+
+        .detail-value {
+            color: #000;
+            font-weight: 500;
+            font-size: 14px
+        }
+
+        .watch-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: #A3282E;
+            text-align: right;
+            letter-spacing: 3px
+        }
+        .site-footer {
+            background: linear-gradient(180deg, var(--bg), #050505);
+            color: #fff;
+            padding: 48px 20px;
+            box-sizing: border-box;
+        }
+
+        .footer-inner {
+            max-width: var(--maxwidth);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+            align-items: start;
+        }
+
+        .brand {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
+
+        .brand-logo {
+            font-weight: 700;
+            letter-spacing: 4px;
+            font-size: 20px;
+            color: var(--accent)
+        }
+
+        .brand-meta {
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .newsletter {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .newsletter input[type="email"] {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 14px;
+            color: #fff;
+            min-width: 220px;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .newsletter input::placeholder {
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .newsletter button {
+            background: var(--accent);
+            color: #0b0b0b;
+            border: 0;
+            padding: 12px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap)
+        }
+
+        .links h4 {
+            margin: 0 0 10px 0;
+            color: #fff;
+            font-size: 14px
+        }
+
+        .links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        .links li {
+            margin: 8px 0
+        }
+
+        .links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px
+        }
+
+        .links a:hover {
+            color: #fff;
+            text-decoration: underline
+        }
+
+        .footer-bottom {
+            margin-top: 36px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 13px;
+            max-width: var(--maxwidth);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            text-decoration: none
+        }
+
+        .socials svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+            opacity: .9
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+            border: 0;
+            padding: 0;
+            margin: -1px;
+        }
+
+        @media (max-width:900px) {
+            .footer-inner {
+                grid-template-columns: 1fr
+            }
+
+            .links {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 18px
+            }
+        }
+
+        @media (max-width:768px) {
+            .header {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px
+            }
+
+            .logo {
+                font-size: 36px;
+                letter-spacing: 8px
+            }
+
+            .watches-grid {
+                grid-template-columns: 1fr;
+                gap: 40px
+            }
+
+            .container {
+                padding: 60px 25px
+            }
+
+            .section-title {
+                font-size: 36px
+            }
+        }
+
+        @media (max-width:520px) {
+            .links {
+                grid-template-columns: 1fr
+            }
+
+            .brand-logo {
+                font-size: 18px
+            }
+
+            .newsletter input {
+                min-width: 160px
+            }
+        }
+        a:focus,
+        button:focus,
+        input:focus {
+            outline: 2px solid rgba(212, 192, 138, .25);
+            outline-offset: 2px
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">BREITLING & DEKHKANOV</div>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+    </header>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="breitlingvideo.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>BREITLING</h1>
+            <div class="hero-divider"></div>
+            <div class="hero-tagline">Instruments for Professionals</div>
+            <div class="hero-subtitle">Swiss Precision Since 1884</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">
+            <img style="height:60px; vertical-align:middle; margin-right:18px" src="breitling.svg" alt="">Collection
+        </h2>
+
+        <div class="watches-grid" id="watchesGrid">
+        </div>
+    </div>
+
+    <footer class="site-footer" role="contentinfo" aria-label="Breitling-style footer">
+        <div class="footer-inner">
+            <div>
+                <div class="brand" aria-hidden="false">
+                    <div class="brand-logo">BREITLING</div>
+                    <div>
+                        <div style="font-weight:600">Instruments for Professionals</div>
+                        <div class="brand-meta">Swiss made since 1884 — Aviation, Diving & Lifestyle</div>
+                    </div>
+                </div>
+
+                <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed (demo)');"
+                    aria-label="Subscribe to newsletter">
+                    <label for="email" class="visually-hidden">Email address</label>
+                    <input id="email" name="email" type="email" placeholder="Enter your email" required />
+                    <button type="submit">Subscribe</button>
+                </form>
+
+                <div style="margin-top:18px;color:var(--muted);font-size:13px;max-width:420px">
+                    Join our mailing list for new releases, exclusive events and expert stories. We respect your
+                    privacy.
+                </div>
+            </div>
+
+            <div class="links" aria-label="Footer navigation">
+                <div>
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="#">Navitimer</a></li>
+                        <li><a href="#">Avenger</a></li>
+                        <li><a href="#">Superocean</a></li>
+                        <li><a href="#">Premier</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Stores & Service</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Repairs</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom" role="region" aria-label="Footer legal and social">
+            <div>© <span id="year"></span> Breitling SA. All rights reserved.</div>
+
+            <div class="socials" aria-label="Follow Breitling on social media">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1A3.9 3.9 0 1 0 15.9 12 3.9 3.9 0 0 0 12 8.1zM18.4 6a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M22 12a10 10 0 1 0-11.5 9.9v-7H8.5v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M23 7a3 3 0 0 0-2.1-2.1C19.6 4 12 4 12 4s-7.6 0-8.9.9A3 3 0 0 0 1 7.1 31.6 31.6 0 0 0 1 12a31.6 31.6 0 0 0 .1 4.9 3 3 0 0 0 2.1 2.1C4.4 20 12 20 12 20s7.6 0 8.9-.9a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 23 12a31.6 31.6 0 0 0 0-5zM10 15V9l5 3-5 3z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="breaitling.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

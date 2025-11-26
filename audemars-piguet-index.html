@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audemars Piguet - Orologio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(183, 146, 71, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b79247;
+            letter-spacing: 2px;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #b79247;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(183, 146, 71, 0.3);
+            border-radius: 50px;
+        }
+
+        .back-home:hover {
+            background: rgba(183, 146, 71, 0.1);
+            border-color: #b79247;
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(183, 146, 71, 0.1) 35px, rgba(183, 146, 71, 0.1) 70px);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #b79247;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 7rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #b79247 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #b79247;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        .cta-explore {
+            display: inline-block;
+            padding: 1.2rem 3.5rem;
+            background: linear-gradient(135deg, #b79247 0%, #8b6f3e 100%);
+            color: #0a1628;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 40px rgba(183, 146, 71, 0.3);
+        }
+
+        .cta-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(183, 146, 71, 0.5);
+            background: linear-gradient(135deg, #d4a855 0%, #b79247 100%);
+        }
+
+        .floating-octagon {
+            position: absolute;
+            border: 2px solid rgba(183, 146, 71, 0.15);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .octagon-1 {
+            width: 300px;
+            height: 300px;
+            top: 15%;
+            left: 10%;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation-delay: 0s;
+        }
+
+        .octagon-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 15%;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .collection-section {
+            padding: 100px 3rem;
+            background: linear-gradient(180deg, rgba(10, 22, 40, 0) 0%, rgba(26, 39, 68, 0.5) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b79247;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .watch-card {
+            background: linear-gradient(135deg, rgba(26, 39, 68, 0.6) 0%, rgba(10, 22, 40, 0.8) 100%);
+            border: 1px solid rgba(183, 146, 71, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(183, 146, 71, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-10px);
+            border-color: #b79247;
+            box-shadow: 0 20px 60px rgba(183, 146, 71, 0.2);
+        }
+
+        .watch-card:hover::before {
+            opacity: 1;
+        }
+
+        .watch-image-container {
+            width: 100%;
+            background-color: white;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .watch-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            transition: transform 0.4s ease;
+        }
+
+        .watch-card:hover .watch-image {
+            transform: scale(1.08);
+        }
+
+        .watch-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .watch-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .watch-model {
+            font-size: 0.85rem;
+            color: #b79247;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .watch-specs {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        .watch-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(183, 146, 71, 0.2);
+        }
+
+        .watch-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #b79247;
+        }
+
+        .inquire-btn {
+            padding: 0.7rem 1.8rem;
+            background: transparent;
+            border: 1px solid #b79247;
+            color: #b79247;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .inquire-btn:hover {
+            background: #b79247;
+            color: #0a1628;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 22, 40, 0.95);
+            padding: 60px 3rem 30px;
+            text-align: center;
+            border-top: 1px solid rgba(183, 146, 71, 0.2);
+            margin-top: 100px;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #b79247;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(183, 146, 71, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .brand-title {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .watches-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .collection-section {
+                padding: 60px 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AUDEMARS PIGUET & DEKHKANOV</div>
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="floating-octagon octagon-1"></div>
+        <div class="floating-octagon octagon-2"></div>
+        
+        <div class="hero-content">
+            <div class="brand-subtitle">Since 1875</div>
+            <h1 class="brand-title">AUDEMARS PIGUET</h1>
+            <p class="brand-tagline">To Break the Rules, You Must First Master Them</p>
+            <p class="hero-description">
+                For nearly 150 years, Audemars Piguet has crafted timepieces that defy convention. 
+                From the legendary Royal Oak to groundbreaking complications, each watch represents 
+                the pinnacle of Swiss haute horlogerie and independent spirit.
+            </p>
+            <a href="#collection" class="cta-explore">Explore Collection</a>
+        </div>
+    </section>
+
+    <section class="collection-section" id="collection">
+        <div class="section-header">
+            <div class="section-label">TIMEPIECES</div>
+            <h2 class="section-title">Exceptional Watches</h2>
+            <p class="section-description">
+                Discover our curated selection of Audemars Piguet masterpieces, where traditional 
+                craftsmanship meets contemporary design innovation.
+            </p>
+        </div>
+
+        <div class="watches-grid" id="watchesGrid"></div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">AUDEMARS PIGUET</div>
+        <p class="footer-text">Exclusive collection available at Orologio Timepieces</p>
+        <p class="footer-copyright">
+            © 2024 Orologio Timepieces Ltd. All Rights Reserved. | Authorized Audemars Piguet Retailer
+        </p>
+    </footer>
+
+    <script src="audemars-piguet.js">
+
+    </script>
+</body>
+</html>

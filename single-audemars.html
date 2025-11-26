@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Details - Audemars Piguet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(183, 146, 71, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b79247;
+            letter-spacing: 2px;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #b79247;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(183, 146, 71, 0.3);
+            border-radius: 50px;
+        }
+
+        .back-link:hover {
+            background: rgba(183, 146, 71, 0.1);
+            border-color: #b79247;
+            transform: translateX(-5px);
+        }
+
+        .watch-detail-container {
+            max-width: 1400px;
+            margin: 140px auto 80px;
+            padding: 0 3rem;
+        }
+
+        .watch-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .watch-image-section {
+            position: relative;
+        }
+
+        .watch-main-image {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            box-shadow: 0 30px 80px rgba(183, 146, 71, 0.3);
+            border: 1px solid rgba(183, 146, 71, 0.2);
+        }
+
+        .watch-main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .watch-info-section {
+            padding: 2rem 0;
+        }
+
+        .watch-brand {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b79247;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .watch-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .watch-model-number {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .watch-price-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #b79247;
+            margin-bottom: 3rem;
+            display: inline-block;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(183, 146, 71, 0.3);
+        }
+
+        .watch-description {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .specifications {
+            background: linear-gradient(135deg, rgba(26, 39, 68, 0.6) 0%, rgba(10, 22, 40, 0.8) 100%);
+            border: 1px solid rgba(183, 146, 71, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .spec-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #b79247;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #b79247 0%, #8b6f3e 100%);
+            color: #0a1628;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(183, 146, 71, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(183, 146, 71, 0.5);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: #b79247;
+            border: 2px solid #b79247;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(183, 146, 71, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .features-section {
+            margin-top: 100px;
+            padding: 60px 0;
+            border-top: 1px solid rgba(183, 146, 71, 0.2);
+        }
+
+        .features-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26, 39, 68, 0.4) 0%, rgba(10, 22, 40, 0.6) 100%);
+            border: 1px solid rgba(183, 146, 71, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #b79247;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #b79247;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .watch-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .watch-title {
+                font-size: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .watch-detail-container {
+                padding: 0 1.5rem;
+                margin-top: 100px;
+            }
+
+            .watch-title {
+                font-size: 2.5rem;
+            }
+
+            .watch-price-tag {
+                font-size: 2rem;
+            }
+
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .watch-main-image {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AUDEMARS PIGUET</div>
+        <a href="audemars-piguet-index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Collection
+        </a>
+    </nav>
+
+    <div class="watch-detail-container">
+        <div class="watch-detail-grid">
+            <div class="watch-image-section">
+                <div class="watch-main-image">
+                    <img src="" alt="Watch" id="watchImage">
+                </div>
+            </div>
+
+            <div class="watch-info-section">
+                <div class="watch-brand">AUDEMARS PIGUET</div>
+                <h1 class="watch-title" id="watchName"></h1>
+                <p class="watch-model-number" id="watchModel"></p>
+                <div class="watch-price-tag" id="watchPrice"></div>
+                
+                <p class="watch-description" id="watchDescription">
+                    An exceptional timepiece that represents the pinnacle of Swiss haute horlogerie. 
+                    This masterpiece combines traditional craftsmanship with contemporary design innovation, 
+                    featuring intricate mechanical movements and refined aesthetics that have made 
+                    Audemars Piguet a legend in watchmaking.
+                </p>
+
+                <div class="specifications">
+                    <h3 class="spec-title">Specifications</h3>
+                    <div class="spec-grid" id="specsGrid"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary">
+                        <i class="fa-solid fa-envelope"></i> Request Information
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fa-solid fa-calendar"></i> Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2 class="features-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h4 class="feature-name">Premium Materials</h4>
+                    <p class="feature-description">
+                        Crafted from the finest materials including stainless steel, 
+                        precious metals, and sapphire crystal.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-cogs"></i>
+                    </div>
+                    <h4 class="feature-name">Swiss Movement</h4>
+                    <p class="feature-description">
+                        In-house automatic caliber with exceptional precision 
+                        and remarkable power reserve.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="feature-name">Water Resistant</h4>
+                    <p class="feature-description">
+                        Engineered for durability with professional-grade 
+                        water resistance and robust construction.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h4 class="feature-name">Authenticity</h4>
+                    <p class="feature-description">
+                        Complete with original box, papers, and 
+                        manufacturer's warranty for peace of mind.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <h4 class="feature-name">Hand-Finished</h4>
+                    <p class="feature-description">
+                        Every component meticulously finished by master 
+                        craftsmen in traditional Swiss technique.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4 class="feature-name">Iconic Design</h4>
+                    <p class="feature-description">
+                        Timeless aesthetic that transcends trends and 
+                        remains a symbol of excellence.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const watchesPiguet = [
+            {
+                id: 1,
+                name: "Royal Oak",
+                model: "15500ST.OO.1220ST.01",
+                specs: "41mm • Automatic • Steel • Blue Dial",
+                price: "$28,400",
+                image: "https://avatars.mds.yandex.net/i?id=2d2913f0da78dc1e3ec5b47ed5f1dc27_l-9212855-images-thumbs&n=13"
+            },
+            {
+                id: 2,
+                name: "Royal Oak Offshore",
+                model: "26470ST.OO.A027CA.01",
+                specs: "42mm • Chronograph • Steel • Black Dial",
+                price: "$32,800",
+                image: "https://yandex-images.clstorage.net/9UEu8J354/dd1a16cyqFd/5xNdkrJ1bZrarqN8VY_o3fzBDz3U2TzA_T7HBSTp5KCPS6K8jVkbU_uC9WU12oVABeuADHw97FAAI6c1D0w1TbEDjoNicrrOimk2flVOqFqrkct6wlgrhm2p0IFkf-X1zYX4tFCFFc1inLwuaEmRApL_U0q5LuKeROn68IJTJBxmEtiX_-qv1hu-qTofCqNa4sfDvkEVaQT9pJuOvnX0ohOOdb5dCdwCrtvxIeeGncQZepWcOSCv25Jm9_yCG6xSJd9fWzcmpx2bNiR2GE5qGi5DyjFN2KHDfyDfxfw9-S3cR3-wEIjciuiVeS5nypIJ0HKfFfXlIVJdpTk_TBKqEKkU3xqzr-rd2HwlsFbErV2kC4UyTlFjz33v0kkxtfmqkwt0eZMAWs8k0vOnIctVRFt4WFl0qSEb3qj5ucKQatVsnBUSfOht15b-afGYDCKd5sGDfIXdKcsxaB3BOnr065nCu78QRdkNahY8aSFKGghe9dhbPm3lkNRvsnnKFGAToxXb3LAtJFlYd6M1nUQpEu8BS_TN3ufJMiPRzj8wcmcVS7yxVU9cB22TsK4lhpMPWbPc3bku6F3SYfN0TZij2a6blhO34yObFP4rcpQLbVfmiY02Qpfnz_1v30D6eLnhGAH6OZtB38Zmm7ZvpUWYx1a0XJt8JenTmuM2vQKXIhAiHtEa9KTvX1g4rvxUw-pRpgoCukoSqMl-ZRlBsfp-KJQDO7CTR5hIrF82JW5CVcRRP5lTtyejHBgnvj_EEGDZq1rTVvpj5xHTuOF9Vc2jEO0JSrLBluIOui2VTTz6cmKXT3s9lA5bQO0SNGfijt8FUz3W1Pnj5ZAWIbU0jVVjEqud31O2bWURUn_gfd3EJJLqQIs-y5umCX_lkI8wfDGgW8f29FOHlw3kk7PmYIafQhF4kd91JeHaESD_8EUd4NOuHNfa8mfvk1BxZ7oegGsSbICA_ULd6AA-LRVONI"
+            },
+            {
+                id: 3,
+                name: "Royal Oak Perpetual",
+                model: "26574ST.OO.1220ST.02",
+                specs: "41mm • Perpetual Calendar • Steel",
+                price: "$89,500",
+                image: "https://img.chrono24.com/images/uhren/15788547-m7abet3r3tej2p8pt7jb6drn-ExtraLarge.jpg"
+            },
+            {
+                id: 4,
+                name: "Code 11.59",
+                model: "15210OR.OO.A099CR.01",
+                specs: "41mm • Automatic • Rose Gold",
+                price: "$45,600",
+                image: "https://img.chrono24.com/images/uhren/40928434-nhiuqw81bsgengq684m4b5qv-ExtraLarge.jpg"
+            },
+            {
+                id: 5,
+                name: "Royal Oak Tourbillon",
+                model: "26522CE.OO.1225CE.01",
+                specs: "41mm • Tourbillon • Ceramic",
+                price: "$165,000",
+                image: "https://avatars.mds.yandex.net/i?id=2aa7334fd2929e87aa832fc7a047d97037a63b2a-5247927-images-thumbs&n=13"
+            },
+            {
+                id: 6,
+                name: "Royal Oak Jumbo",
+                model: "15202ST.OO.1240ST.01",
+                specs: "39mm • Extra-Thin • Steel • Blue",
+                price: "$35,200",
+                image: "https://avatars.mds.yandex.net/i?id=9003e386c7b2eb1efd557e1ebc083fbe40c6d2f9-5687696-images-thumbs&n=13"
+            },
+            {
+                id: 7,
+                name: "Royal Oak Concept",
+                model: "26589IO.OO.D030CA.01",
+                specs: "44mm • Tourbillon GMT • Titanium",
+                price: "$225,000",
+                image: "https://i.pinimg.com/736x/87/a5/09/87a509d4db7fc0fc4522b1299ce9ebba.jpg"
+            },
+            {
+                id: 8,
+                name: "Royal Oak Skeleton",
+                model: "15407ST.OO.1220ST.01",
+                specs: "41mm • Open-worked • Steel",
+                price: "$68,900",
+                image: "https://img.chrono24.com/images/uhren/32469580-7dqzyfck6d74qwj9ts2761k1-ExtraLarge.jpg"
+            },
+            {
+                id: 9,
+                name: "Royal Oak Frosted",
+                model: "15454BC.GG.1259BC.03",
+                specs: "37mm • Automatic • White Gold",
+                price: "$54,300",
+                image: "https://img.chrono24.com/images/uhren/25307209-y3n6y5jr5555121ayx35oadh-ExtraLarge.jpg"
+            },
+            {
+                id: 10,
+                name: "Royal Oak Chrono",
+                model: "26331ST.OO.1220ST.03",
+                specs: "41mm • Chronograph • Steel • Silver",
+                price: "$42,700",
+                image: "https://img.chrono24.com/images/uhren/39034071-sl7cm986992btlmigt03hjwn-ExtraLarge.jpg"
+            },
+            {
+                id: 11,
+                name: "Millenary 4101",
+                model: "15350ST.OO.D002CR.01",
+                specs: "47mm • Skeleton • Steel • Oval Case",
+                price: "$38,900",
+                image: "https://i.ebayimg.com/images/g/OtgAAOSwWyteqjaI/s-l1600.jpg"
+            },
+            {
+                id: 12,
+                name: "Royal Oak Diver",
+                model: "15720ST.OO.A009CA.01",
+                specs: "42mm • Automatic • Steel • 300m",
+                price: "$25,600",
+                image: "https://i.ebayimg.com/images/g/O08AAOSwefVjoD~2/s-l640.jpg"
+            },
+            {
+                id: 13,
+                name: "Royal Oak GMT",
+                model: "26331OR.OO.D315CR.01",
+                specs: "41mm • Dual Time • Rose Gold",
+                price: "$52,800",
+                image: "https://avatars.mds.yandex.net/i?id=490e0cc37f6afeb2e53d61e5fc5b6551_l-4284889-images-thumbs&n=13"
+            },
+            {
+                id: 14,
+                name: "Royal Oak Selfwinding",
+                model: "15550ST.OO.1356ST.01",
+                specs: "34mm • Automatic • Steel • Blue",
+                price: "$24,500",
+                image: "https://avatars.mds.yandex.net/i?id=88a7a9da559d3c2a5508914fd3ae73469e259e9b-16489467-images-thumbs&n=13"
+            },
+            {
+                id: 15,
+                name: "Code 11.59 Chrono",
+                model: "26393BC.OO.A068CR.01",
+                specs: "41mm • Chronograph • White Gold",
+                price: "$68,400",
+                image: "https://i.pinimg.com/736x/d3/be/df/d3bedf16ea233432224964088e106cd0.jpg"
+            },
+            {
+                id: 16,
+                name: "Royal Oak Double Balance",
+                model: "15407BC.GG.1224BC.01",
+                specs: "41mm • Open-worked • White Gold",
+                price: "$125,000",
+                image: "https://img.chrono24.com/images/uhren/42471037-oftgg99usmao9amb9qxka2m4-ExtraLarge.jpg"
+            },
+            {
+                id: 17,
+                name: "Royal Oak Rainbow",
+                model: "15411BC.ZZ.1240BC.01",
+                specs: "41mm • Steel • Sapphire Bezel",
+                price: "$158,000",
+                image: "https://avatars.mds.yandex.net/i?id=6bad3d89d3e0fc2b4afee6c334bf40a0e65bf4cc-4602005-images-thumbs&n=13"
+            },
+            {
+                id: 18,
+                name: "Millenary Quincy Jones",
+                model: "15161SN.OO.D002CR.01",
+                specs: "47mm • Limited Edition • Platinum",
+                price: "$95,700",
+                image: "https://i.pinimg.com/originals/24/12/a9/2412a9bc65c57c0b7bccb72a4f8a8de8.jpg"
+            },
+            {
+                id: 19,
+                name: "Royal Oak Ultra Thin",
+                model: "15202OR.OO.1240OR.01",
+                specs: "39mm • Extra-Thin • Rose Gold",
+                price: "$48,300",
+                image: "https://avatars.mds.yandex.net/i?id=78ec41ba6d2f3e762bfd21c15e9cc51b2b684b50-5434646-images-thumbs&n=13"
+            },
+            {
+                id: 20,
+                name: "Royal Oak Offshore Diver",
+                model: "15720CN.OO.A002CA.01",
+                specs: "42mm • Ceramic • Orange • 300m",
+                price: "$34,900",
+                image: "https://chronomat24.ru/upload/iblock/40e/2uvfuceolgfjp0o4vtaxerourkdfjwnp.jpg"
+            }
+        ];
+
+        function parseSpecs(specsString) {
+            const parts = specsString.split('•').map(s => s.trim());
+            return {
+                size: parts[0] || 'N/A',
+                movement: parts[1] || 'N/A',
+                material: parts[2] || 'N/A',
+                dialColor: parts[3] || 'N/A'
+            };
+        }
+
+        function loadWatchDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const watchId = parseInt(urlParams.get('id'));
+            
+            const watch = watchesPiguet.find(w => w.id === watchId);
+            
+            if (watch) {
+                document.getElementById('watchName').textContent = watch.name;
+                document.getElementById('watchModel').textContent = watch.model;
+                document.getElementById('watchPrice').textContent = watch.price;
+                document.getElementById('watchImage').src = watch.image;
+                document.getElementById('watchImage').alt = watch.name;
+                
+                const specs = parseSpecs(watch.specs);
+                const specsGrid = document.getElementById('specsGrid');
+                
+                specsGrid.innerHTML = `
+                    <div class="spec-item">
+                        <div class="spec-label">Case Size</div>
+                        <div class="spec-value">${specs.size}</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Movement</div>
+                        <div class="spec-value">${specs.movement}</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Case Material</div>
+                        <div class="spec-value">${specs.material}</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Dial Color</div>
+                        <div class="spec-value">${specs.dialColor}</div>
+                    </div>
+                `;
+                
+                document.title = `${watch.name} - Audemars Piguet`;
+            } else {
+                window.location.href = 'audemars-piguet-index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadWatchDetails);
+    </script>
+</body>
+</html>

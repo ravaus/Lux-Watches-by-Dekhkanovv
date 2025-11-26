@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Details - Cartier</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #c41230;
+            letter-spacing: 6px;
+        }
+
+        .back-home {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            padding: 0.7rem 1.8rem;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .back-home:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .detail-container {
+            margin-top: 100px;
+            padding: 50px 4rem;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        /* Left Side - Images */
+        .image-section {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .main-image-container {
+            background: #fafafa;
+            padding: 4rem;
+            margin-bottom: 2rem;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .watch-badge-detail {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #c41230;
+            color: #ffffff;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            object-fit: contain;
+        }
+
+        .info-section {
+        }
+
+        .collection-badge {
+            font-size: 0.7rem;
+            color: #c41230;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .watch-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .watch-price-detail {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #c41230;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .watch-description-full {
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary-detail {
+            flex: 1;
+            padding: 1.2rem;
+            background: #c41230;
+            color: #ffffff;
+            border: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-detail:hover {
+            background: #a00f26;
+        }
+
+        .icon-btn-detail {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #1a1a1a;
+            background: transparent;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .icon-btn-detail:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .icon-btn-detail.liked {
+            background: #1a1a1a;
+            color: #c41230;
+        }
+
+        .specifications {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 3rem;
+        }
+
+        .spec-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .spec-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+        }
+
+        .spec-icon {
+            color: #c41230;
+            font-size: 1.1rem;
+        }
+
+        .spec-content {
+            flex: 1;
+        }
+
+        .spec-label {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .warranty-box {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .warranty-label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #c41230;
+            font-weight: 700;
+        }
+
+        .warranty-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: #000000;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 50px 3rem;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 1024px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .image-section {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.2rem 2rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+                letter-spacing: 4px;
+            }
+
+            .detail-container {
+                padding: 30px 2rem;
+            }
+
+            .watch-title {
+                font-size: 2.5rem;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">CARTIER</div>
+        <a href="cartier-index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Back to Collection
+        </a>
+    </nav>
+
+    <div class="detail-container">
+        <div class="breadcrumb">
+            Home / Collection / <span id="breadcrumb-collection">Loading</span> / <span id="breadcrumb-name">...</span>
+        </div>
+
+        <div class="detail-grid">
+            <!-- Left Side - Images -->
+            <div class="image-section">
+                <div class="main-image-container">
+                    <span class="watch-badge-detail" id="watch-badge"></span>
+                    <img src="" alt="Watch" class="main-image" id="main-watch-image">
+                </div>
+            </div>
+
+            <!-- Right Side - Details -->
+            <div class="info-section">
+                <div class="collection-badge" id="collection-tag"></div>
+                <h1 class="watch-title" id="watch-name"></h1>
+                <div class="watch-price-detail" id="watch-price"></div>
+                <p class="watch-description-full" id="watch-description"></p>
+
+                <div class="action-buttons">
+                    <button class="btn-primary-detail">
+                        <i class="fas fa-shopping-bag"></i>
+                        Request Appointment
+                    </button>
+                    <button class="icon-btn-detail" id="likeBtn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="icon-btn-detail">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+
+                <div class="specifications">
+                    <h3 class="spec-title">Technical Specifications</h3>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-clock spec-icon"></i>
+                            <div class="spec-content">
+                                <div class="spec-label">Case Size</div>
+                                <div class="spec-value" id="spec-size"></div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gem spec-icon"></i>
+                            <div class="spec-content">
+                                <div class="spec-label">Material</div>
+                                <div class="spec-value" id="spec-material"></div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-cog spec-icon"></i>
+                            <div class="spec-content">
+                                <div class="spec-label">Movement</div>
+                                <div class="spec-value" id="spec-movement"></div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-tint spec-icon"></i>
+                            <div class="spec-content">
+                                <div class="spec-label">Water Resistance</div>
+                                <div class="spec-value" id="spec-water"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty-box">
+                    <div class="warranty-label">Cartier Promise</div>
+                    <div class="warranty-value">8 Years International</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Cartier. All Rights Reserved.</p>
+    </footer>
+
+    <script src="cartier.js"></script>
+</body>
+</html>

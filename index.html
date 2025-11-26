@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orologio - Luxury Timepieces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link rel="stylesheet" href="auth-styles.css">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+        html{
+            scroll-behavior: smooth;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: black;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+
+        nav {
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 200px;
+            letter-spacing: 3px;
+            color: #d4af37;
+            text-transform: lowercase;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #f4d03f;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+
+
+        .nav-icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            stroke: #d4af37;
+            fill: none;
+        }
+
+        .icon:hover {
+            stroke: #f4d03f;
+            transform: scale(1.1);
+        }
+
+        .burger {
+            width: 50px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .line {
+            height: 2px;
+            background: rgb(180, 176, 176);
+            transition: 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .top {
+            transform: translateX(30px);
+        }
+
+        .middle {
+            transform: translateX(0);
+            background-color: #f4d03f;
+        }
+
+        .bottom {
+            transform: translateX(30px);
+        }
+
+        .burger:hover .top,
+        .burger:hover .bottom {
+            transform: translateX(0);
+            background-color: #f4d03f;
+        }
+
+        .burger:hover .middle {
+            transform: translateX(30px);
+            background-color: rgb(180, 176, 176);
+        }
+
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #c9a65c;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 20rem;
+            color: #ffffff;
+        }
+
+        .hero-title .italic {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .watch-image {
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+
+
+        .hero-description {
+            max-width: 600px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: start;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            color: #0a0a0a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            border-radius: 50px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            color: white;
+        }
+
+        .watch-image img {
+            z-index: -5;
+            position: absolute;
+            top: -500px;
+            left: -400px;
+            width: 220%;
+        }
+
+        .garrd {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 450px;
+            gap: 100px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .watch-image {
+                max-width: 90%;
+            }
+        }
+
+        /* menu overlaydaaaaaa */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2000;
+
+            font-family: 'Garamond', 'Georgia', serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+
+            transform: translateX(-100%);
+            visibility: hidden;
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.6s;
+        }
+
+        .menu-overlay.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+
+        .menu-overlay .background-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .menu-overlay .circle-line {
+            position: absolute;
+            border: 2px dashed rgba(255, 255, 255, 0.342);
+            border-radius: 50%;
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .menu-overlay .circle-1 {
+            width: 800px;
+            height: 800px;
+            animation-duration: 100s;
+            top: -400px;
+            left: -200px;
+        }
+
+        .menu-overlay .circle-2 {
+            width: 1000px;
+            height: 1000px;
+            top: -300px;
+            right: -400px;
+        }
+
+        .menu-overlay .circle-3 {
+            width: 600px;
+            height: 600px;
+            bottom: -300px;
+            animation: spin 20s linear infinite;
+            left: 10%;
+        }
+
+        .menu-overlay .circle-4 {
+            width: 900px;
+            height: 900px;
+            bottom: -400px;
+            right: -200px;
+        }
+
+        .menu-overlay .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            height: 100vh;
+            padding: 60px 80px;
+        }
+
+        .menu-overlay .close-btn {
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            z-index: 11;
+        }
+
+        .menu-overlay .close-btn::before,
+        .menu-overlay .close-btn::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.6);
+            top: 50%;
+            left: 50%;
+        }
+
+        .menu-overlay .close-btn::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .menu-overlay .close-btn::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .menu-overlay .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 100px;
+        }
+
+        .menu-overlay .menu-items {
+            margin-bottom: 60px;
+        }
+
+        .menu-overlay .menu-item {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .menu-overlay .menu-item.home {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 3rem;
+        }
+
+        .menu-overlay .menu-item.home-v2 {
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .menu-overlay .menu-item:hover {
+            opacity: 0.7;
+            transform: translateX(10px);
+            color: #FFB90F;
+        }
+
+        .menu-overlay .center-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        .menu-overlay .right-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 100px;
+        }
+
+        .menu-overlay .watch-container {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .menu-overlay .watch-image {
+            width: 400px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+        }
+
+        .menu-overlay .footer {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .menu-overlay .company-info {
+            max-width: 400px;
+        }
+
+        .menu-overlay .signature img {
+            width: 300px;
+        }
+
+        @media (max-width: 1200px) {
+            .menu-overlay .menu-item {
+                font-size: 3rem;
+            }
+
+            .menu-overlay .container {
+                padding: 40px 50px;
+            }
+        }
+
+        .watch-collections-wrapper {
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 40px;
+            margin-top: 40PX;
+        }
+
+        .collections-header-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .discover-label-text {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 15px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .collections-main-heading {
+            font-size: 72px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .collections-main-heading .our-text-italic {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .collections-main-heading .collections-text-normal {
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .watch-carousel-display-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .watch-product-image-section {
+            flex: 0 0 45%;
+            position: relative;
+        }
+
+        .watch-product-image-section img {
+            width: 70%;
+            margin-left: 200px;
+            object-fit: cover;
+            display: block;
+            background-color: #e5e5e0;
+        }
+
+        .watch-collection-details-panel {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .collection-category-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .watch-collection-title-text {
+            font-size: 64px;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .watch-collection-description-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .shop-watches-cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background-color: #8b6f47;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .shop-watches-cta-button:hover {
+            background-color: #6d5436;
+        }
+
+        .carousel-navigation-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .carousel-arrow-button {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .carousel-arrow-button:hover {
+            opacity: 0.6;
+        }
+
+        .carousel-arrow-button svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .collection-names-list-wrapper {
+            display: flex;
+            gap: 50px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .collection-names-list-wrapper span {
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .collection-names-list-wrapper span.active-collection-item {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .collection-names-list-wrapper span:hover {
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 968px) {
+            .watch-carousel-display-area {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .watch-product-image-section {
+                flex: 0 0 100%;
+            }
+
+            .collections-main-heading {
+                font-size: 48px;
+            }
+
+            .watch-collection-title-text {
+                font-size: 42px;
+            }
+
+            .collection-names-list-wrapper {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        /* categoires */
+        .categories-section {
+            padding: 60px 20px;
+            max-width: 1920px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .categories-title {
+            font-size: 49px;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 50px;
+            color: #1a1a1a;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-item {
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .category-item:hover {
+            transform: scale(1.1);
+        }
+
+        .category-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #f5f5f5;
+            transition: box-shadow 0.3s ease;
+        }
+
+
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-name {
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #333;
+            font-style: italic;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .categories-title {
+                font-size: 32px;
+                margin-bottom: 35px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categories-section {
+                padding: 40px 15px;
+            }
+
+            .categories-title {
+                font-size: 28px;
+            }
+        }
+
+        .models-section {
+            padding: 80px 20px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .models-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .models-explore {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .models-title {
+            font-size: 56px;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .models-title em {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .model-card {
+            background: #f5f3f0;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .model-image img {
+            height: 350px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .model-name {
+            font-size: 28px;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+        }
+
+        .model-name em {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .model-specs {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+        }
+
+        .model-price {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin: 0 0 25px 0;
+        }
+
+        .model-cart-btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+
+
+        @media (max-width: 1024px) {
+            .models-title {
+                font-size: 46px;
+            }
+
+            .models-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .models-section {
+                padding: 60px 15px;
+            }
+
+            .models-title {
+                font-size: 38px;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .models-title {
+                font-size: 32px;
+            }
+
+            .model-name {
+                font-size: 24px;
+            }
+        }
+
+        /* Heritage & Craftsmanship Section */
+        .heritage-section {
+            background: #ffffff;
+            padding: 100px 0;
+            overflow: hidden;
+            margin-top: -20px;
+        }
+
+        .heritage-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .heritage-image-side {
+            position: relative;
+        }
+
+        .heritage-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .heritage-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .heritage-image-wrapper:hover .heritage-img {
+            transform: scale(1.05);
+        }
+
+        .heritage-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .heritage-content-side {
+            padding: 40px 0;
+        }
+
+        .heritage-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #8b6f47;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .heritage-title {
+            font-size: 56px;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .heritage-title-italic {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .heritage-title-normal {
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .heritage-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333333;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .heritage-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: #f0f0f0;
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 300;
+            color: #8b6f47;
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .stat-number::after {
+            content: '+';
+            margin-left: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Featured Limited Edition Section */
+        .featured-edition-section {
+            background: #ffffff;
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-spotlight {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            color: #000;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            border-radius: 20px;
+        }
+
+        .featured-title {
+            font-size: 72px;
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 60px;
+            line-height: 1.2;
+        }
+
+        .featured-italic {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .featured-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .featured-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .featured-watch-img {
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 60px rgba(212, 175, 55, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .featured-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .featured-details {
+            color: #1a1a1a;
+        }
+
+        .featured-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333333;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .featured-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .spec-item:hover {
+            background: #f0f0f0;
+            border-color: #8b6f47;
+        }
+
+        .spec-icon {
+            font-size: 24px;
+            color: #8b6f47;
+        }
+
+        .spec-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+
+        .spec-name {
+            font-size: 11px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .featured-availability {
+            margin-bottom: 40px;
+        }
+
+        .availability-text {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+
+        .pieces-left {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .availability-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .availability-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37 0%, #c9a65c 100%);
+            transition: width 1s ease;
+        }
+
+        .featured-price-cta {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .featured-price {
+            font-size: 42px;
+            font-weight: 300;
+            color: #d4af37;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .featured-reserve-btn {
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+
+        .featured-reserve-btn:hover {
+            background: #000000;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+
+            .heritage-container,
+            .featured-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .heritage-title,
+            .featured-title {
+                font-size: 42px;
+            }
+
+            .heritage-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .featured-image-container {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .heritage-section,
+            .featured-edition-section {
+                padding: 60px 20px;
+            }
+
+            .heritage-title,
+            .featured-title {
+                font-size: 36px;
+            }
+
+            .heritage-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .featured-specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-price-cta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+
+
+
+        .lineblack-1 {
+            border-radius: 50%;
+            position: absolute;
+            top: 400px;
+            z-index: 0;
+            border: 2px dashed #7D5747;
+            height: 800px;
+            width: 800px;
+            left: -80px;
+            animation: spin2 45s linear infinite;
+        }
+
+        .lineblack-2 {
+            border-radius: 50%;
+            position: absolute;
+            top: 00px;
+            z-index: 0;
+            border: 2px dashed #7D5747;
+            height: 600px;
+            width: 600px;
+            left: 100px;
+            animation: spin1 20s linear infinite;
+        }
+
+        .lineblack-3 {
+            border-radius: 50%;
+            position: absolute;
+            top: 00px;
+            z-index: 0;
+            border: 2px dashed #7D5747;
+            height: 1500px;
+            width: 1500px;
+            right: -900px;
+            animation: spin2 60s linear infinite;
+        }
+
+        @keyframes spin2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+            }
+
+            50% {
+                transform: translateY(20px) rotate(180deg);
+
+            }
+        }
+
+        .luxury-footer {
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 80px 0;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            padding-right: 40px;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #d4af37;
+            color: #0a0a0a;
+            border-color: #d4af37;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #d4af37;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+            transform: translateX(5px);
+        }
+
+        .newsletter-text {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-input:focus {
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-btn {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a65c 100%);
+            border: none;
+            border-radius: 50%;
+            color: #0a0a0a;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            margin: 40px 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-legal-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal-links a:hover {
+            color: #d4af37;
+        }
+
+        .separator {
+            color: #333;
+        }
+
+        .footer-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer-location i {
+            color: #d4af37;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .footer-top {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 40px;
+            }
+
+            .footer-newsletter {
+                grid-column: 1 / -1;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .luxury-footer {
+                padding: 60px 0 0;
+            }
+
+            .footer-container {
+                padding: 0 20px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-brand {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .footer-logo {
+                margin: 0 auto 20px;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo"><img src="signature.png" alt=""></div>
+
+        <div class="nav-center">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#collectionsid" class="nav-link">Collections</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+
+            <div class="burger">
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </div>
+
+        </div>
+
+        <div class="nav-icons">
+            <a href="">
+                <svg class="icon" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </a>
+            <a href="signin.html">
+                <svg class="icon" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+            </a>
+            <a href="#categoriesid">
+                <svg class="icon" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Capturing Life</div>
+            <h1 class="hero-title">
+                ONE SECOND<br>
+                <span class="italic">at a</span> TIME
+            </h1>
+
+            <div class="watch-image">
+                <img src="hero_main.jpg" alt="">
+            </div>
+            <div class="garrd">
+                <p class="hero-description">
+                    Experience time like never before, with each second revealing a new chapter in the story of
+                    precision,
+                    craftsmanship, and elegance.
+                </p>
+                <a href="#" class="cta-button">Shop Now</a>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="menu-overlay">
+        <div class="background-lines">
+            <div class="circle-line circle-1"></div>
+            <div class="circle-line circle-2"></div>
+            <div class="circle-line circle-3"></div>
+            <div class="circle-line circle-4"></div>
+        </div>
+
+        <button class="close-btn"></button>
+
+        <div class="container">
+            <div class="left-section">
+                <div class="menu-items">
+                    <div class="menu-item home">Lux Brands</div>
+                    <a style="text-decoration: none;" href="patek-index.html">
+                        <div class="menu-item">Patek Philippe</div>
+                    </a>
+                    <a style="text-decoration: none;" href="rolex-index.html">
+                        <div class="menu-item">Rolex</div>
+                    </a>
+                    <a style="text-decoration: none;" href="cartier-index.html">
+                        <div class="menu-item">Cartier</div>
+                    </a>
+                    <a style="text-decoration: none;" href="omega-index.html">
+                        <div class="menu-item">Omega</div>
+                    </a>
+                    <a style="text-decoration: none;" href="richard-millie-index.html">
+                        <div class="menu-item">Richard Mille</div>
+                    </a>
+                    <a style="text-decoration: none;" href="audemars-piguet-index.html">
+                        <div class="menu-item">Audemars Piguet</div>
+                    </a>
+                    <a style="text-decoration: none;" href="breitling-index.html">
+                        <div class="menu-item">Breitling</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="watch-container">
+                    <img class="watch-image" src="erasebg-transformed.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="company-info">
+                Orologio Timepieces Ltd., 15 Rue de la Horlogerie, Geneva, Switzerland, 1204
+            </div>
+            <div class="signature"><img src="signature.png" alt=""></div>
+        </div>
+    </div>
+    <div id="collectionsid" class="watch-collections-wrapper">
+        <div class="collections-header-section">
+            <div class="discover-label-text">DISCOVER</div>
+            <h1 class="collections-main-heading">
+                <span class="our-text-italic">Our</span> <span class="collections-text-normal">COLLECTIONS</span>
+            </h1>
+        </div>
+
+        <div class="watch-carousel-display-area">
+            <div class="watch-product-image-section">
+                <img id="watchProductImageElement" src="collection-velocita.jpg" alt="Luxury Watch">
+            </div>
+
+            <div class="watch-collection-details-panel">
+                <div class="collection-category-label">COLLECTION</div>
+                <h2 class="watch-collection-title-text" id="collectionTitleElement">Velocità</h2>
+                <p class="watch-collection-description-text" id="collectionDescriptionElement">
+                    Inspired by the speed and precision of time, this collection embodies the swift elegance of modern
+                    watchmaking.
+                </p>
+                <a href="#" class="shop-watches-cta-button">Shop the watches</a>
+            </div>
+        </div>
+
+        <div class="carousel-navigation-controls">
+            <div class="carousel-arrow-button" id="prevArrowButton">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </div>
+
+            <div class="collection-names-list-wrapper">
+                <span class="active-collection-item" data-collection="velocita">VELOCITÀ</span>
+                <span data-collection="chronocraft">CHRONOCRAFT</span>
+                <span data-collection="precision">PRECISION</span>
+            </div>
+
+            <div class="carousel-arrow-button" id="nextArrowButton">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- categories -->
+    <section id="categoriesid" class="categories-section">
+        <h2 class="categories-title">CATEGORIES</h2>
+        <div class="categories-grid">
+            <a style="text-decoration: none;" href="https://www.linkedin.com/pulse/best-luxury-watches-men-muhammad-usama-khurshid-xcgle">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="mens.jpg" alt="Мужские часы">
+                    </div>
+                    <p class="category-name">Man's Watch</p>
+                </div>
+            </a>
+
+            <a style="text-decoration: none;" href="https://www.linkedin.com/pulse/womens-watch-market-trends-growth-future-outlook-0cjlf">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="womens.jpg" alt="Женские часы">
+                    </div>
+                    <p class="category-name">Women's Watch</p>
+                </div>
+            </a>
+
+            <a style="text-decoration: none;" href="https://www.linkedin.com/company/classicwatch.com-llc">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="classic.jpg" alt="Классические часы">
+                    </div>
+                    <p class="category-name">Classic</p>
+                </div>
+            </a>
+
+            <a style="text-decoration: none;" href="https://www.linkedin.com/pulse/best-diamond-watches-men-women-exude-sophistication-rizwan-z08kf">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="diamont.jpg" alt="С бриллиантами">
+                    </div>
+                    <p class="category-name">Diamond</p>
+                </div>
+            </a>
+
+            <a style="text-decoration: none;" href="https://www.linkedin.com/pulse/best-gold-watches-men-2024-shanila-naz-j9tnf">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="gold.jpg" alt="Золотые часы">
+                    </div>
+                    <p class="category-name">Golden</p>
+                </div>
+            </a>
+             
+            <a style="text-decoration: none;" href="https://www.linkedin.com/posts/european-watch-co_the-legend-stands-the-rolex-cosmograph-daytona-activity-7189318826495238145-dIZX">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="chronic.jpg" alt="Хронограф">
+                    </div>
+                    <p class="category-name">Chronic</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="models-section">
+        <div class="models-header">
+            <p class="models-explore">EXPLORE</p>
+            <h2 class="models-title"><em>Our</em> MODELS</h2>
+        </div>
+
+        <div class="models-grid">
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="ex1.png" alt="">
+                </div>
+                <h3 class="model-name"><em>Velocità</em> Aero</h3>
+                <p class="model-specs">Automatic, Ø 41mm, Black</p>
+                <p class="model-price">$250.00</p>
+                <div class="model-cart-btn">
+                    <img src="icons8-shopping-bag-48.png" alt="">
+                </div>
+            </div>
+
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="ex2.png" alt="">
+                </div>
+                <h3 class="model-name"><em>Velocità</em> Corsa</h3>
+                <p class="model-specs">Quartz Chronograph, Ø 44mm, Leather</p>
+                <p class="model-price">$430.00</p>
+                <div class="model-cart-btn">
+                    <img src="icons8-shopping-bag-48.png" alt="">
+                </div>
+            </div>
+
+            <div class="model-card">
+                <div class="model-image">
+                    <img src="ex3.png" alt="">
+                </div>
+                <h3 class="model-name"><em>Velocità</em> Strada</h3>
+                <p class="model-specs">Automatic, Ø 42mm, Black</p>
+                <p class="model-price">$360.00</p>
+                <div class="model-cart-btn">
+                    <img src="icons8-shopping-bag-48.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="heritage-section">
+        <div class="heritage-container">
+            <div class="heritage-image-side">
+                <div class="heritage-image-wrapper">
+                    <img src="craftsman-work.jpg" alt="Master Craftsman at Work" class="heritage-img">
+                    <div class="heritage-overlay"></div>
+                </div>
+            </div>
+
+            <div class="heritage-content-side">
+                <div class="heritage-label">OUR HERITAGE</div>
+                <h2 class="heritage-title">
+                    <span class="heritage-title-italic">Crafted</span> with
+                    <span class="heritage-title-normal">PRECISION</span>
+                </h2>
+                <p class="heritage-description">
+                    For over a century, our master artisans have dedicated themselves to the art of horology.
+                    Each timepiece is a testament to Swiss precision, combining traditional craftsmanship
+                    with cutting-edge innovation. Every detail, from the smallest gear to the finest polish,
+                    is executed with unwavering dedication to perfection.
+                </p>
+
+                <div class="heritage-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="127">0</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Hours Per Timepiece</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">Handcrafted Components</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-edition-section">
+        <div class="featured-spotlight"></div>
+
+        <div class="featured-container">
+            <div class="featured-badge">LIMITED EDITION</div>
+
+            <h2 class="featured-title">
+                <span class="featured-italic">The</span> BREITLING
+                <span class="featured-italic">Eclipse</span>
+            </h2>
+
+            <div class="featured-content-wrapper">
+                <div class="featured-image-container">
+                    <img src="limited-watch.png" alt="Orologio Eclipse Limited Edition" class="featured-watch-img">
+                    <div class="featured-glow"></div>
+                </div>
+
+                <div class="featured-details">
+                    <p class="featured-description">
+                        An extraordinary fusion of celestial inspiration and mechanical mastery.
+                        The Eclipse features a meteorite dial, 18k rose gold case, and our exclusive
+                        in-house caliber movement. Only 50 pieces worldwide.
+                    </p>
+
+                    <div class="featured-specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fa-solid fa-circle-notch"></i></div>
+                            <div class="spec-text">
+                                <div class="spec-value">42mm</div>
+                                <div class="spec-name">Diameter</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fa-solid fa-gear"></i></div>
+                            <div class="spec-text">
+                                <div class="spec-value">Automatic</div>
+                                <div class="spec-name">Movement</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fa-solid fa-coins"></i></div>
+                            <div class="spec-text">
+                                <div class="spec-value">18K Gold</div>
+                                <div class="spec-name">Material</div>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon"><i class="fa-regular fa-gem"></i></div>
+                            <div class="spec-text">
+                                <div class="spec-value">Sapphire</div>
+                                <div class="spec-name">Crystal</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-availability">
+                        <div class="availability-text">Only <span class="pieces-left">12</span> pieces remaining</div>
+                        <div class="availability-bar">
+                            <div class="availability-fill" style="width: 24%"></div>
+                        </div>
+                    </div>
+
+                    <div class="featured-price-cta">
+                        <div class="featured-price">$45,800</div>
+                        <a href="#" class="featured-reserve-btn">Reserve Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lineblack-1"></div>
+        <div class="lineblack-2"></div>
+        <div class="lineblack-3"></div>
+    </section>
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column footer-brand">
+                    <img src="signature.png" alt="Dekhkanov" class="footer-logo">
+                    <p class="footer-tagline">Capturing Life, One Second at a Time</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Velocità</a></li>
+                        <li><a href="#">Chronocraft</a></li>
+                        <li><a href="#">Precision</a></li>
+                        <li><a href="#">Limited Editions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Care & Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Heritage</a></li>
+                        <li><a href="#">Craftsmanship</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-newsletter">
+                    <h4 class="footer-title">Stay Connected</h4>
+                    <p class="newsletter-text">Subscribe to receive exclusive offers and the latest news</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button class="newsletter-btn">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2025 Dekhkanov Timepieces Ltd. All Rights Reserved.</p>
+                    <div class="footer-legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="#">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+                <div class="footer-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>15 Rue de la Horlogerie, Geneva, Switzerland</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const burgerButton = document.querySelector('.burger');
+            const menuOverlay = document.querySelector('.menu-overlay');
+            const closeButton = document.querySelector('.menu-overlay .close-btn');
+
+            burgerButton.addEventListener('click', function () {
+                menuOverlay.classList.add('active');
+            });
+
+            closeButton.addEventListener('click', function () {
+                menuOverlay.classList.remove('active');
+            });
+
+        });
+
+
+        const burgerButton = document.querySelector('.burger');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeButton = document.querySelector('.menu-overlay .close-btn');
+
+        burgerButton.addEventListener('click', function () {
+            menuOverlay.classList.add('active');
+            scroll.stop();
+        });
+
+        closeButton.addEventListener('click', function () {
+            menuOverlay.classList.remove('active');
+            scroll.start();
+        });
+
+    </script>
+    <script src="auth.js"></script>
+    <script src="script-carousel.js"></script>
+</body>
+
+</html>
